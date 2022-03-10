@@ -7,19 +7,9 @@ class Player(private val inventory: Inventory, private val stats: Stats): Target
 
     private val damageModifier: Float
         get() {
-            val equipment = this.inventory.equipment
-            val leftHand = equipment.leftHand
-            val rightHand = equipment.rightHand
-            val head = equipment.head
-            val feet = equipment.feet
-            val chest = equipment.chest
+            val damageModifier =  this.inventory.equipment.damageModifier()
             val strengthModifier = stats.strength * 0.1f
-            return strengthModifier +
-                    leftHand.damageModifier +
-                    rightHand.damageModifier +
-                    head.damageModifier +
-                    feet.damageModifier +
-                    chest.damageModifier
+            return strengthModifier + damageModifier
         }
 
     private val baseDamage: Int
