@@ -19,7 +19,9 @@ class PlayerTest {
         val stats: Stats = mock()
         whenever(stats.strength).thenReturn(1)
 
-        val target: SimpleEnemy = mock()
+        //val target: SimpleEnemy = mock()
+        val player = Player(equipment, stats)
+        p
 
         val damage = Player(equipment, stats).calculateDamage(target)
 
