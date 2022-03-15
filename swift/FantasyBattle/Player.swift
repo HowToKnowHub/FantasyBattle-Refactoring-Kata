@@ -14,19 +14,10 @@ struct Player: Target {
     }
     
     func getBaseDamage() -> Double {
-        let equipment = inventory.equipment
-        let leftHand = equipment.leftHand
-        let rightHand = equipment.rightHand
-        let head = equipment.head
-        let feet = equipment.feet
-        let chest = equipment.chest
-        return leftHand.getBaseDamage() +
-                rightHand.getBaseDamage() +
-                head.getBaseDamage() +
-                feet.getBaseDamage() +
-                chest.getBaseDamage()
+        return inventory.getBaseDamage()
     }
-    
+
+
     func getDamageModifier() -> Double {
         let equipment = inventory.equipment
         let leftHand = equipment.leftHand

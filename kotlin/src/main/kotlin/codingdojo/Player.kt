@@ -3,18 +3,17 @@ package codingdojo
 import kotlin.math.max
 import kotlin.math.roundToInt
 
-class Player(private val inventory: Inventory, private val stats: Stats): Target() {
+class Player(private val equipment: Equipment, private val stats: Stats): Target() {
 
     private val damageModifier: Float
         get() {
-            val damageModifier =  this.inventory.equipment.damageModifier()
+            val damageModifier =  equipment.damageModifier()
             val strengthModifier = stats.strength * 0.1f
             return strengthModifier + damageModifier
         }
 
     private val baseDamage: Int
         get() {
-            val equipment = this.inventory.equipment
             val leftHand = equipment.leftHand
             val rightHand = equipment.rightHand
             val head = equipment.head
