@@ -1,46 +1,20 @@
 struct Player: Target {
-    let inventory: Inventory, stats: Stats
-    init(inventory: Inventory, stats: Stats) {
+    let equipment: Equipment, stats: Stats
+    init(equipment: Equipment, stats: Stats) {
         self.inventory = inventory
         self.stats = stats
     }
     
     func calculateDamage(other: Target) -> Damage {
-        let baseDamage = getBaseDamage()
+        let baseDamage = equipment.getBaseDamage()
         let damageModifier = getDamageModifier()
         let totalDamage = baseDamage * damageModifier
         let soak = getSoak(other: other, totalDamage: totalDamage)
         return Damage(amount: max(0, totalDamage - soak))
     }
     
-    func getBaseDamage() -> Double {
-        let equipment = inventory.equipment
-        let leftHand = equipment.leftHand
-        let rightHand = equipment.rightHand
-        let head = equipment.head
-        let feet = equipment.feet
-        let chest = equipment.chest
-        return leftHand.getBaseDamage() +
-                rightHand.getBaseDamage() +
-                head.getBaseDamage() +
-                feet.getBaseDamage() +
-                chest.getBaseDamage()
-    }
-    
     func getDamageModifier() -> Double {
-        let equipment = inventory.equipment
-        let leftHand = equipment.leftHand
-        let rightHand = equipment.rightHand
-        let head = equipment.head
-        let feet = equipment.feet
-        let chest = equipment.chest
-        let strengthModifier = stats.strength * 0.1
-        return strengthModifier +
-                leftHand.getDamageModifier() +
-                rightHand.getDamageModifier() +
-                head.getDamageModifier() +
-                feet.getDamageModifier() +
-                chest.getDamageModifier()
+        return equipment.getDamageModifier() + stats.strength * 0.1
     }
     
     func getSoak(other: Target, totalDamage: Double) -> Double {
