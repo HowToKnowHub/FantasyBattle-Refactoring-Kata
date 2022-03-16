@@ -1,4 +1,4 @@
-struct Player: Target {
+class Player: Target {
     let inventory: Inventory, stats: Stats
     init(inventory: Inventory, stats: Stats) {
         self.inventory = inventory

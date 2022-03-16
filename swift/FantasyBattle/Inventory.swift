@@ -1,6 +1,6 @@
 struct Inventory {
-    let equipment: Equipment
-    init(equipment: Equipment) {
+    let equipment: EquipmentProtocol
+    init(equipment: EquipmentProtocol) {
         self.equipment = equipment
     }
 

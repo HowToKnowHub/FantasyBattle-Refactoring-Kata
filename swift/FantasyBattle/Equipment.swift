@@ -1,4 +1,8 @@
-struct Equipment {
+protocol EquipmentProtocol {
+    func    getBaseDamage() -> Double {}
+}
+
+struct Equipment:EquipmentProtocol{
     public let leftHand: Item
     public let rightHand: Item
     public let head: Item
