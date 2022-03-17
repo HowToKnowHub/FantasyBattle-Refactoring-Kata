@@ -19,11 +19,15 @@ class Player(private val equipment: Equipment, private val stats: Stats): Target
             val head = equipment.head
             val feet = equipment.feet
             val chest = equipment.chest
+            val tail = equipment.tail
+
             return leftHand.baseDamage +
                     rightHand.baseDamage +
                     head.baseDamage +
                     feet.baseDamage +
-                    chest.baseDamage
+                    chest.baseDamage + tail.baseDamage
+
+
         }
 
     fun calculateDamage(other: Target): Damage {
