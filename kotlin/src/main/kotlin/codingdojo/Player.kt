@@ -5,7 +5,7 @@ import kotlin.math.roundToInt
 
 class Player(private val inventory: Inventory, private val stats: Stats): Target() {
 
-    private val damageModifier: Float
+    val damageModifier: Float
         get() {
             val equipment = this.inventory.equipment
             val leftHand = equipment.leftHand
@@ -23,19 +23,7 @@ class Player(private val inventory: Inventory, private val stats: Stats): Target
         }
 
     private val baseDamage: Int
-        get() {
-            val equipment = this.inventory.equipment
-            val leftHand = equipment.leftHand
-            val rightHand = equipment.rightHand
-            val head = equipment.head
-            val feet = equipment.feet
-            val chest = equipment.chest
-            return leftHand.baseDamage +
-                    rightHand.baseDamage +
-                    head.baseDamage +
-                    feet.baseDamage +
-                    chest.baseDamage
-        }
+        get() {  return inventory.baseDamage }
 
     fun calculateDamage(other: Target): Damage {
         val baseDamage = baseDamage

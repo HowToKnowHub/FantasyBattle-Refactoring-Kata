@@ -32,4 +32,28 @@ class PlayerTest {
 
         assertEquals(10, damage.amount)
     }
+
+    @Test
+    fun baseDamageCalculation() {
+        val item = ItemImpl()
+    val equipment = Equipment(item, item, item, item, item, item, item)
+        assertEquals(7, equipment.baseDamage)
+    }
+
+    class ItemImpl(
+      override val baseDamage: Int = 1,
+        override val damageModifier: Float = 1f
+    ): Item
+
+    @Test
+    fun baseSmtg() {
+        val stats: Stats = Stats(1)
+        val item = ItemImpl()
+        val equipment = Equipment(item, item, item, item, item, item, item)
+        val inventory = Inventory(equipment)
+        val player = Player(inventory, stats)
+        val modifier = player.damageModifier
+        assertEquals(5.1F, modifier)
+    }
+
 }
