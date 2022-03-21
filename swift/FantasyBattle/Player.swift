@@ -19,7 +19,7 @@ class Player: Target {
 
 
     func getDamageModifier() -> Double {
-        let equipment = inventory.equipment
+        let equipment: EquipmentProtocol = inventory.equipment
         let leftHand = equipment.leftHand
         let rightHand = equipment.rightHand
         let head = equipment.head
