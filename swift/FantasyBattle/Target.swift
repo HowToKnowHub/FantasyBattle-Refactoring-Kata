@@ -1,1 +1,3 @@
-protocol Target {}
+protocol Target {
+    func getSoak() -> Double
+}

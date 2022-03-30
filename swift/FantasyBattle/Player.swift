@@ -25,7 +25,7 @@ struct Player: Target {
             soak = totalDamage
         } else if let simpleEnemy = other as? SimpleEnemy {
             soak =
-                simpleEnemy.getArmor().getDamageSoak() *
+                simpleEnemy.getDamageSoak() *
                 simpleEnemy.getBuffs().map {$0.soakModifier()}.reduce(1, +)
         }
         return soak
